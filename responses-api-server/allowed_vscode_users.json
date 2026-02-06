@@ -1,9 +1,0 @@
-{
-  "allowed_users": [
-    "testuser",
-    "demo_user", 
-    "vhenao01",
-    "agomez08",
-  ],
-  "description": "List of usernames allowed to authenticate with the VSCode extension"
-}

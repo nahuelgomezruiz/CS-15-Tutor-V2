@@ -42,10 +42,8 @@ CS-15-Tutor/
 │   └── course-content/   # Course PDFs and specs
 │
 ├── config/               # Configuration files
-│   ├── settings.py       # Settings re-export
-│   └── providers.json    # Provider configurations
-│
-└── responses-api-server/ # Legacy code (can be removed)
+    ├── settings.py       # Settings re-export
+    └── providers.json    # Provider configurations
 ```
 
 ## Quick Start

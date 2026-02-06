@@ -1,0 +1,17 @@
+CS 15 - Summer 2025
+
+Welcome to CS 15! CS 15 is all about building your programming toolkit. The tools are data structures, the means by which we store, organize, and access data. We will implement and utilize the key data structures and algorithms that every programmer must know, learn about the useful abstractions that they provide, and study the costs in time and space associated with them. The structure and assignments of this course are based largely on prior versions of the course taught by Marty Allen, Milod Kazerounian, Mark Sheldon, Mati Korman, Chris Gregg, Ben Hescott, and Bruce Molay. Thank you!
+
+Course Information:
+Course Policies: All students are expected to know and adhere to our course policies. Please take the time to read our admin page in full.
+Prerequisites: CS 11 or consent of instructor.
+Textbook: No purchase required. We will regularly post online readings from Data Structures and Algorithm Analysis by Clifford A. Shaffer.
+
+Instructor: David Zabner
+Email: david.zabner@tufts.edu
+Office: 574 Boston Ave Room 313
+Office Hours: Mondays from 11-12 in Dewick, Tuesdays from 5-7pm JCC 401
+Lab Wednesdays at 10:30AM in JCC 235
+Lecture Section 1: (Mon/Wed) 1:30 – 2:45PM
+Location: JCC 402
+Final exam: TBD 

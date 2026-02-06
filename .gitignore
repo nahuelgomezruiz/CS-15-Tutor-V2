@@ -1,0 +1,72 @@
+# System files
+.DS_Store
+node_modules/
+
+# Generated files
+faiss_index.index
+embeddings.npy
+next-env.d.ts
+
+# IDE files
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+chatbot/.next/
+chatbot/.env.local
+.env
+
+# Build artifacts and generated files
+web-app/out/
+web-app/.next/
+web-app/*.tsbuildinfo
+vscode-extension/out/
+*.tsbuildinfo
+*.js.map
+
+# Backup directories
+chatbot_backup/
+
+# Security - OAuth tokens and credentials (NEVER COMMIT THESE!)
+token.json
+credentials.json
+service-account.json
+sheets_config.json
+*.db
+cs15_data_export.json
+
+# Logs and exports
+*.log
+*_backup_*.json
+sqlite_backup_*.json
+orm_backup_*.json
+*.csv
+messages_export*.csv
+cs15_messages_*.csv
+
+# Temporary files
+*.tmp
+*.temp
+*.ps1

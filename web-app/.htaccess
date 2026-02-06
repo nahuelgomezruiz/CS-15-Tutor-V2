@@ -1,0 +1,10 @@
+## Prevent access to files that start with '.'
+RedirectMatch 403 /\..*$
+
+AuthName "CS 15 Students/Faculty/Staff (use your EECS login)"
+AuthType Basic
+AuthBasicProvider ldap
+AuthLDAPURL "ldap://ldap.eecs.tufts.edu/ou=people,dc=eecs,dc=tufts,dc=edu?uid"
+
+AuthGroupFile /h/vhenao01/public_html/chatbot/.htgrp
+Require group cs15_students

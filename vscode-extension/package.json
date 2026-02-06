@@ -1,0 +1,120 @@
+{
+  "name": "cs15-tutor",
+  "displayName": "CS15 Tutor",
+  "description": "AI Tutor for CS 15 - Data Structures at Tufts University (Requires Tufts authentication)",
+  "version": "1.0.0",
+  "publisher": "tufts-cs15",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Education",
+    "Other"
+  ],
+  "keywords": [
+    "CS15",
+    "Tufts",
+    "Data Structures",
+    "AI Tutor",
+    "Authentication"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tufts-cs15/cs15-tutor-extension"
+  },
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cs15-tutor.openChat",
+        "title": "CS15 Tutor: Open Chat",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "cs15-tutor.signIn",
+        "title": "CS15 Tutor: Sign In",
+        "icon": "$(sign-in)"
+      },
+      {
+        "command": "cs15-tutor.signOut",
+        "title": "CS15 Tutor: Sign Out",
+        "icon": "$(sign-out)"
+      },
+      {
+        "command": "cs15-tutor.showUserMenu",
+        "title": "CS15 Tutor: Show User Menu",
+        "icon": "$(ellipsis)"
+      },
+      {
+        "command": "cs15-tutor.refresh",
+        "title": "CS15 Tutor: Refresh",
+        "icon": "$(refresh)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "cs15-tutor-container",
+          "title": "CS15 Tutor",
+          "icon": "icons/cs15-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "cs15-tutor-container": [
+        {
+          "type": "webview",
+          "id": "cs15-tutor.chatView",
+          "name": "CS15 Tutor",
+          "contextualTitle": "CS15 Tutor Chat"
+        }
+      ]
+    },
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "cs15-tutor.openChat",
+          "when": "true"
+        },
+        {
+          "command": "cs15-tutor.signIn",
+          "when": "true"
+        },
+        {
+          "command": "cs15-tutor.signOut",
+          "when": "true"
+        },
+        {
+          "command": "cs15-tutor.showUserMenu",
+          "when": "true"
+        },
+        {
+          "command": "cs15-tutor.refresh",
+          "when": "true"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/node": "16.x",
+    "@types/node-fetch": "^2.6.12",
+    "@types/vscode": "^1.102.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}

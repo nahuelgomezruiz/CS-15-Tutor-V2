@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: theme('fontFamily.sans');
+    color: theme('colors.cs.navy');
+    background-color: white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: theme('fontFamily.heading');
+    color: theme('colors.cs.navy');
+  }
+  a {
+    color: theme('colors.cs.accent');
+    text-decoration: underline;
+  }
+  a:hover {
+    color: theme('colors.cs.navy');
+  }
+  
+  /* Custom scrollbar styling for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #374151; /* gray-700 */
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #6b7280; /* gray-500 */
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af; /* gray-400 */
+  }
+  
+  /* Firefox scrollbar styling */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #6b7280 #374151;
+  }
+}
+
+@layer components {
+  /* Custom scrollbar for code blocks */
+  .prose pre::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+  
+  .prose pre::-webkit-scrollbar-track {
+    background: #1f2937;
+    border-radius: 4px;
+  }
+  
+  .prose pre::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 4px;
+  }
+  
+  .prose pre::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+  
+  /* Ensure code blocks don't break layout */
+  .prose pre {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  .prose code {
+    word-break: break-word;
+  }
+}

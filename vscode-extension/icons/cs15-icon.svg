@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- CS15 Tutor Icon - Clean rectangular design -->
+  <rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+  
+  <!-- CS 15 text centered -->
+  <text x="12" y="13.5" font-family="Arial, sans-serif" font-size="7" font-weight="bold" fill="currentColor" text-anchor="middle">CS 15</text>
+</svg> 

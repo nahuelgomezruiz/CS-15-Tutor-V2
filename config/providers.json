@@ -1,0 +1,44 @@
+{
+  "llm_providers": {
+    "natlab": {
+      "name": "NatLab Proxy",
+      "description": "Tufts NatLab LLM Proxy with RAG support",
+      "env_vars": ["NATLAB_API_KEY", "NATLAB_ENDPOINT"],
+      "default_model": "4o-mini",
+      "supports_rag": true,
+      "supports_streaming": false
+    },
+    "openai": {
+      "name": "OpenAI",
+      "description": "OpenAI GPT models",
+      "env_vars": ["OPENAI_API_KEY"],
+      "default_model": "gpt-4o-mini",
+      "supports_rag": false,
+      "supports_streaming": true
+    },
+    "anthropic": {
+      "name": "Anthropic",
+      "description": "Anthropic Claude models",
+      "env_vars": ["ANTHROPIC_API_KEY"],
+      "default_model": "claude-3-5-sonnet-20241022",
+      "supports_rag": false,
+      "supports_streaming": true
+    },
+    "gemini": {
+      "name": "Google Gemini",
+      "description": "Google Gemini models",
+      "env_vars": ["GEMINI_API_KEY"],
+      "default_model": "gemini-1.5-flash",
+      "supports_rag": false,
+      "supports_streaming": true
+    }
+  },
+  "database_providers": {
+    "render": {
+      "name": "Render PostgreSQL",
+      "description": "Render.com hosted PostgreSQL database",
+      "env_vars": ["DATABASE_URL"],
+      "default_url": "sqlite:///cs15_tutor_logs.db"
+    }
+  }
+}

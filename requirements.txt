@@ -1,0 +1,26 @@
+# Core Flask dependencies
+Flask==2.3.3
+flask-cors==4.0.0
+requests==2.31.0
+
+# Database
+sqlalchemy==2.0.21
+psycopg2-binary==2.9.7
+
+# Authentication
+ldap3==2.9
+PyJWT==2.8.0
+
+# Type hints
+typing-extensions>=4.6.0
+
+# Optional: LLM Provider SDKs (uncomment as needed)
+# openai>=1.0.0
+# anthropic>=0.18.0
+# google-generativeai>=0.3.0
+
+# Optional: Google Sheets sync (uncomment if using dashboard)
+# google-auth>=2.0.0
+# google-auth-oauthlib>=1.0.0
+# google-auth-httplib2>=0.1.0
+# google-api-python-client>=2.0.0

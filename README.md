@@ -55,11 +55,6 @@ CS-15-Tutor/
 ```bash
 # Install Python dependencies
 pip install -r requirements.txt
-
-# Optional: Install additional LLM providers
-pip install openai          # For OpenAI
-pip install anthropic       # For Anthropic
-pip install google-generativeai  # For Gemini
 ```
 
 ### Running the Server
@@ -112,34 +107,93 @@ Note: Only NatLab supports RAG retrieval. Other providers use the same system pr
 
 ## Architecture
 
+```mermaid
+flowchart TB
+    subgraph Clients ["Frontend Clients"]
+        WebApp["Web App<br/>(Next.js)"]
+        VSCode["VS Code Extension<br/>(TypeScript)"]
+        Dashboard["Dashboard<br/>(Google Sheets)"]
+    end
+
+    subgraph Server ["Flask API Server"]
+        Routes["API Routes<br/>/api, /api/stream, /health"]
+    end
+
+    subgraph Core ["Core Logic"]
+        Orchestrator["Orchestrator"]
+        RAG["RAG Service"]
+        Quality["Quality Checker"]
+        Health["Health Points"]
+        Auth["Auth Service"]
+    end
+
+    subgraph LLMAdapters ["LLM Adapters"]
+        NatLab["NatLab<br/>(with RAG)"]
+        OpenAI["OpenAI"]
+        Anthropic["Anthropic"]
+        Gemini["Gemini"]
+    end
+
+    subgraph DBAdapters ["Database Adapters"]
+        RenderDB["Render PostgreSQL"]
+        SQLite["SQLite (dev)"]
+    end
+
+    subgraph External ["External Services"]
+        NatLabAPI["NatLab Proxy API"]
+        OpenAIAPI["OpenAI API"]
+        AnthropicAPI["Anthropic API"]
+        GeminiAPI["Gemini API"]
+        PostgresDB[("PostgreSQL")]
+        Sheets["Google Sheets API"]
+    end
+
+    %% Client connections
+    WebApp --> Routes
+    VSCode --> Routes
+    Dashboard --> Sheets
+
+    %% Server to Core
+    Routes --> Orchestrator
+    Routes --> Auth
+
+    %% Orchestrator connections
+    Orchestrator --> RAG
+    Orchestrator --> Quality
+    Orchestrator --> Health
+
+    %% Core to Adapters
+    RAG --> NatLab
+    Quality --> NatLab
+    Quality --> OpenAI
+    Quality --> Anthropic
+    Quality --> Gemini
+    Orchestrator --> NatLab
+    Orchestrator --> OpenAI
+    Orchestrator --> Anthropic
+    Orchestrator --> Gemini
+    Health --> RenderDB
+    Health --> SQLite
+
+    %% Adapters to External
+    NatLab --> NatLabAPI
+    OpenAI --> OpenAIAPI
+    Anthropic --> AnthropicAPI
+    Gemini --> GeminiAPI
+    RenderDB --> PostgresDB
 ```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   Web App       │     │  VS Code Ext    │     │   Dashboard     │
-└────────┬────────┘     └────────┬────────┘     └────────┬────────┘
-         │                       │                       │
-         └───────────────────────┼───────────────────────┘
-                                 │
-                    ┌────────────▼────────────┐
-                    │      Orchestrator       │
-                    │  (core/orchestrator.py) │
-                    └────────────┬────────────┘
-                                 │
-         ┌───────────────────────┼───────────────────────┐
-         │                       │                       │
-┌────────▼────────┐   ┌─────────▼─────────┐   ┌────────▼────────┐
-│   RAG Service   │   │  Quality Checker  │   │  Health Points  │
-└────────┬────────┘   └─────────┬─────────┘   └────────┬────────┘
-         │                      │                      │
-         └──────────────────────┼──────────────────────┘
-                                │
-              ┌─────────────────┼─────────────────┐
-              │                 │                 │
-    ┌─────────▼─────────┐      │      ┌──────────▼──────────┐
-    │   LLM Adapters    │      │      │  Database Adapter   │
-    │ (NatLab, OpenAI,  │      │      │ (Render PostgreSQL) │
-    │ Anthropic, Gemini)│      │      └─────────────────────┘
-    └───────────────────┘      │
-```
+
+### Data Flow
+
+1. **User sends message** → Web App or VS Code Extension
+2. **Request hits Flask API** → Routes to appropriate handler
+3. **Authentication** → Auth Service validates JWT/LDAP
+4. **Orchestrator processes request**:
+   - RAG Service retrieves relevant course content (NatLab only)
+   - LLM Adapter generates response
+   - Quality Checker validates response
+   - Health Points Service manages rate limiting
+5. **Response returned** → Logged to database → Sent to client
 
 ## Development
 
